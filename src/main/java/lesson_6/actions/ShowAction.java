@@ -15,8 +15,8 @@ public class ShowAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
-		for (Client client : IClinic.getClients()) {
+	public void execute(IClinic clinic, Validator validator) {
+		for (Client client : clinic.getClients()) {
 			System.out.println(client);
 		}
 	}

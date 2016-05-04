@@ -15,9 +15,9 @@ public class SearchPetAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		String key = validator.getString("Search pet by name : ");
-		for (Client client : IClinic.searchPet(key)) {
+		for (Client client : clinic.searchPet(key)) {
 			System.out.println(client);
 		}
 	}

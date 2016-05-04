@@ -2,10 +2,12 @@ package lesson_6;
 
 import lesson_4.Validator;
 import lesson_6.actions.Action;
+import sun.util.resources.zh.CurrencyNames_zh_CN;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Интерфейс клиники.
@@ -13,8 +15,14 @@ import java.util.Scanner;
  * @since 11.08.2015
  */
 public class ClinicUI {
-	private final IClinic IClinic = new Clinic();
-	private final Map<Integer, Action> actions = new LinkedHashMap<>();
+	private final IClinic clinic;
+	private final Validator validator;
+	private final Map<Integer, Action> actions = new ConcurrentHashMap<>();
+
+	public ClinicUI(final IClinic clinic, final Validator validator) {
+		this.clinic = clinic;
+		this.validator = validator;
+	}
 
 	/**
 	 * Добавить новое действие в клинику.
@@ -25,12 +33,10 @@ public class ClinicUI {
 	}
 
 	public void show() {
-		try (final Validator validator = new Validator(new Scanner(System.in))) {
-			this.intro();
-			do {
-				doAction(validator);
-			} while (validator.compare("Do you want to continue? (y)", "y"));
-		}
+		this.intro();
+		do {
+			doAction(validator);
+		} while (validator.compare("Do you want to continue? (y)", "y"));
 	}
 
 	/**
@@ -43,7 +49,7 @@ public class ClinicUI {
 						"Enter operation : ",
 						this.actions.keySet()
 				)
-		).execute(this.IClinic, validator);
+		).execute(this.clinic, validator);
 	}
 
 	private void intro() {

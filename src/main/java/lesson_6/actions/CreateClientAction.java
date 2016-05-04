@@ -15,11 +15,11 @@ public class CreateClientAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		final String name = validator.getString("Enter client name : ");
 		final Client client = new Client();
 		client.setName(name);
-		IClinic.addClient(client);
+		clinic.addClient(client);
 	}
 
 	/**

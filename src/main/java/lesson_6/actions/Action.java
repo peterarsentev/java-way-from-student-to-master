@@ -12,10 +12,10 @@ public interface Action {
 
 	/**
 	 * Выполнить действие.
-	 * @param IClinic Клиника.
+	 * @param clinic Клиника.
 	 * @param validator Валидатор ввода.
 	 */
-	void execute(final IClinic IClinic, final Validator validator);
+	void execute(final IClinic clinic, final Validator validator);
 
 	/**
 	 * Описание действия.

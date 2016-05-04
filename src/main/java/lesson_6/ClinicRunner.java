@@ -1,5 +1,6 @@
 package lesson_6;
 
+import lesson_4.Validator;
 import lesson_6.actions.CreatePetAction;
 import lesson_6.actions.CreateClientAction;
 import lesson_6.actions.DeleteClientAction;
@@ -10,6 +11,8 @@ import lesson_6.actions.ShowAction;
 import lesson_6.actions.UpdateClientAction;
 import lesson_6.actions.UpdatePetAction;
 
+import java.util.Scanner;
+
 /**
  * Класс для запуска клиники.
  * @author parsentev
@@ -17,7 +20,7 @@ import lesson_6.actions.UpdatePetAction;
  */
 public class ClinicRunner {
 	public static void main(String[] args) {
-		final ClinicUI ui = new ClinicUI();
+		final ClinicUI ui = new ClinicUI(new Clinic(), new Validator(new Scanner(System.in)));
 		ui.loadAction(new ShowAction());
 		ui.loadAction(new CreateClientAction());
 		ui.loadAction(new CreatePetAction());

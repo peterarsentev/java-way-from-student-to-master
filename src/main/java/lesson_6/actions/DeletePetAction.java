@@ -14,10 +14,10 @@ public class DeletePetAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		int clientId = validator.getInt("Select client ID :");
 		int petId = validator.getInt("Select pet ID :");
-		IClinic.deletePet(clientId, petId);
+		clinic.deletePet(clientId, petId);
 	}
 
 	/**

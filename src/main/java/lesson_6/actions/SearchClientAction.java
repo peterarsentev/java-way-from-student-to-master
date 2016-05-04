@@ -15,9 +15,9 @@ public class SearchClientAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		String key = validator.getString("Search client by name : ");
-		for (Client client : IClinic.searchClient(key)) {
+		for (Client client : clinic.searchClient(key)) {
 			System.out.println(client);
 		}
 	}

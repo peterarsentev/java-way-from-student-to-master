@@ -19,12 +19,12 @@ public class CreatePetAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		int clientId = validator.getInt("Select client ID : ");
 		int type = validator.getIntFromList("Select pet - 1. Dog, 2. Cat, : ", Arrays.asList(1, 2));
 		String nick = validator.getString("Enter pet name : ");
 		Pet pet = type == 1 ? new Dog(nick) : new Cat(nick);
-		IClinic.addPet(clientId, pet);
+		clinic.addPet(clientId, pet);
 	}
 
 	/**

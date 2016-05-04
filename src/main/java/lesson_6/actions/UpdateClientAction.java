@@ -15,12 +15,12 @@ public class UpdateClientAction implements Action {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void execute(IClinic IClinic, Validator validator) {
+	public void execute(IClinic clinic, Validator validator) {
 		final int clientId = validator.getInt("Select client ID : ");
 		final String name = validator.getString("Enter client name : ");
-		final Client client = IClinic.getById(clientId);
+		final Client client = clinic.getById(clientId);
 		client.setName(name);
-		IClinic.editClient(client);
+		clinic.editClient(client);
 	}
 
 	/**

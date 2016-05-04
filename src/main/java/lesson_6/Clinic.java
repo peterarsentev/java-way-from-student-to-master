@@ -75,7 +75,7 @@ public class Clinic implements IClinic {
 
 	@Override
 	public Collection<Client> getClients() {
-		return clients.values();
+		return new ArrayList<>(clients.values());
 	}
 
 	@Override
