@@ -5,9 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>JavaWayFromStudentToMaster</groupId>
-	<artifactId>Lessons</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>lesson_007</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
+	<parent>
+		<groupId>JavaWayFromStudentToMaster</groupId>
+		<artifactId>lessons</artifactId>
+		<version>1.0</version>
+	</parent>
 
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>

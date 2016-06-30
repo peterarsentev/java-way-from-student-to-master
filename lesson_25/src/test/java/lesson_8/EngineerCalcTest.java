@@ -11,17 +11,17 @@ import static org.junit.Assert.*;
  * @since 20.08.2015
  */
 public class EngineerCalcTest {
-	@Test
-	public void percent() {
-		try {
-			assertThat(new EngineerCalc().percent(100, 1), is(1d));
-		} catch (UserException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void percentUniversal() {
-		assertThat(new EngineerCalc().percentUniversal(100, 1), is(new Option<Double>(1d)));
-	}
+//	@Test
+//	public void percent() {
+//		try {
+//			assertThat(new EngineerCalc().percent(100, 1), is(1d));
+//		} catch (UserException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Test
+//	public void percentUniversal() {
+//		assertThat(new EngineerCalc().percentUniversal(100, 1), is(new Option<Double>(1d)));
+//	}
 }

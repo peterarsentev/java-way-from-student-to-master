@@ -1,5 +1,8 @@
 package lesson_4;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.Collection;
@@ -12,9 +15,10 @@ import java.util.Set;
  * @since 17.07.2015
  */
 public class Validator implements Closeable {
-	private final Scanner io;
+	private static final Logger LOG = LoggerFactory.getLogger(Validator.class);
+	private final IO io;
 
-	public Validator(final Scanner io) {
+	public Validator(final IO io) {
 		this.io = io;
 	}
 
@@ -27,11 +31,11 @@ public class Validator implements Closeable {
 		boolean invalid = false;
 		do {
 			try {
-				System.out.print(message);
-				return Double.valueOf(io.next());
+				this.io.println(message);
+				return Double.valueOf(this.io.read());
 			} catch (NumberFormatException n) {
-				invalid = true;
-				System.out.println("Error read of double, Please enter new one.");
+				n.printStackTrace();
+				LOG.error("Convert number error", n);
 			}
 		} while (invalid);
 		throw new UnsupportedOperationException();
@@ -47,7 +51,7 @@ public class Validator implements Closeable {
 		do {
 			try {
 				System.out.print(message);
-				return Integer.valueOf(io.next());
+				return Integer.valueOf(io.read());
 			} catch (NumberFormatException n) {
 				invalid = true;
 				System.out.println("Error read of int, Please enter new one.");
@@ -58,7 +62,7 @@ public class Validator implements Closeable {
 
 	public boolean compare(final String msg, final String answer) {
 		System.out.print(msg);
-		return answer.equals(io.next());
+		return answer.equals(io.read());
 	}
 
 	public int getIntFromList(final String msg, final Collection<Integer> keys) {
@@ -66,7 +70,7 @@ public class Validator implements Closeable {
 		do {
 			try {
 				System.out.print(msg);
-				final int result = Integer.valueOf(io.next());
+				final int result = Integer.valueOf(io.read());
 				if (keys.contains(result)) {
 					return result;
 				} else {
@@ -82,11 +86,10 @@ public class Validator implements Closeable {
 
 	public String getString(String message) {
 		System.out.print(message);
-		return this.io.next();
+		return this.io.read();
 	}
 
 	@Override
 	public void close() {
-		this.io.close();
 	}
 }

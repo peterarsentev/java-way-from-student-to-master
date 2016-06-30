@@ -1,7 +1,6 @@
 package lesson_8;
 
 /**
- * TODO: comment
  * @author parsentev
  * @since 20.08.2015
  */

@@ -8,7 +8,7 @@ package lesson_3;
  */
 public class Calculate {
 	public static void main(String[] arg) {
-		System.out.println("Calculate...");
+		System.out.printf("Calculate... %s", "Loaded");
 		double first = Double.valueOf(arg[0]);
 		double second = Double.valueOf(arg[1]);
 		System.out.println(String.format("%s + %s = %s", first, second, add(first, second)));

@@ -1,5 +1,6 @@
 package lesson_6;
 
+import lesson_4.ConsoleIO;
 import lesson_4.Validator;
 import lesson_6.actions.CreatePetAction;
 import lesson_6.actions.CreateClientAction;
@@ -20,7 +21,7 @@ import java.util.Scanner;
  */
 public class ClinicRunner {
 	public static void main(String[] args) {
-		final ClinicUI ui = new ClinicUI(new Clinic(), new Validator(new Scanner(System.in)));
+		final ClinicUI ui = new ClinicUI(new Clinic(), new Validator(new ConsoleIO(new Scanner(System.in), System.out)));
 		ui.loadAction(new ShowAction());
 		ui.loadAction(new CreateClientAction());
 		ui.loadAction(new CreatePetAction());
