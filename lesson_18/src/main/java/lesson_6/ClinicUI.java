@@ -2,15 +2,13 @@ package lesson_6;
 
 import lesson_4.Validator;
 import lesson_6.actions.Action;
-import sun.util.resources.zh.CurrencyNames_zh_CN;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Интерфейс клиники.
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
  * @author parsentev
  * @since 11.08.2015
  */
@@ -25,7 +23,7 @@ public class ClinicUI {
 	}
 
 	/**
-	 * Добавить новое действие в клинику.
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	 * @param action
 	 */
 	public void loadAction(final Action action) {
@@ -40,8 +38,8 @@ public class ClinicUI {
 	}
 
 	/**
-	 * Запросить выбрать действия пользователя и выполнить его.
-	 * @param validator валидатор.
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
+	 * @param validator пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	 */
 	private void doAction(final Validator validator) {
 		this.actions.get(

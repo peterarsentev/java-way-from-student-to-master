@@ -70,6 +70,10 @@ public class LinkArray<T> implements Iterable<T> {
 				}
 				return pos.value;
 			}
+
+			@Override
+			public void remove() {
+			}
 		};
 	}
 }

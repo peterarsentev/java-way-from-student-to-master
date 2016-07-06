@@ -45,6 +45,10 @@ public class DynamicArray<T> implements Iterable<T> {
 			public T next() {
 				return (T) array[pos++];
 			}
+
+			@Override
+			public void remove() {
+			}
 		};
 	}
 }

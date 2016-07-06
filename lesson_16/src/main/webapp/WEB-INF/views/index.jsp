@@ -22,7 +22,7 @@
         <tr valign="top">
             <td>${user.login}</td>
             <td>${user.name}</td>
-            <td><fmt:formatDate type="date" value="${user.created.time}"/></p></td>
+            <td><fmt:formatDate type="date" value="${user.created.time}"/></td>
         </tr>
     </c:forEach>
 </table>
