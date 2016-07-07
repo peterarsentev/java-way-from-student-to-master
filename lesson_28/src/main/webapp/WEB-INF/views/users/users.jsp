@@ -21,6 +21,16 @@
             <a href="<c:url value="/login.do?logout"/>" class="btn btn-default" role="button">Выйти</a>
         </div>
     </h2>
+    <form role="form" action="<c:url value="/users.do"/>" method="get">
+        <div class="form-group">
+            <div style="display: inline-block;">
+                <input type="text" class="form-control" name="key" placeholder="Поиск:">
+            </div>
+            <div style="display: inline-block;">
+                <button type="submit" class="btn btn-default">Искать</button>
+            </div>
+        </div>
+    </form>
     <table class="table table-striped">
         <thead>
         <tr>

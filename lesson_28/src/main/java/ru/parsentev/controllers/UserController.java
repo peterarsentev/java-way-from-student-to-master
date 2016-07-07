@@ -49,10 +49,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String usersView(ModelMap model) {
+    public String usersView(@RequestParam(required = false) String key, ModelMap model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("users", Lists.newArrayList(this.userRepository.findAll()));
-        model.addAttribute("roles", Lists.newArrayList(this.roleRepository.findAll()));
+        if (key != null && !key.isEmpty()) {
+            model.addAttribute("users", this.userRepository.findByFullnameLike(key));
+        } else {
+            model.addAttribute("users", Lists.newArrayList(this.userRepository.findAll()));
+        }
         return "users/users";
     }
 

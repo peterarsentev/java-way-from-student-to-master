@@ -31,4 +31,9 @@ public class UserRepositoryTest {
         user.setRole(role);
         repository.save(user);
     }
+
+    @Test
+    public void findByLike() {
+        assertFalse(repository.findByFullnameLike("%Petr%").isEmpty());
+    }
 }
