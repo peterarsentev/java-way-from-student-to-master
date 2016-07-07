@@ -2,10 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
 	   					   http://www.springframework.org/schema/context
-	   					   http://www.springframework.org/schema/context/spring-context.xsd">
+	   					   http://www.springframework.org/schema/context/spring-context.xsd
+	   					   http://www.springframework.org/schema/security
+	                       http://www.springframework.org/schema/security/spring-security.xsd
+	                       http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/clinic" />
+        <property name="username" value="postgres"/>
+        <property name="password" value="password"/>
+    </bean>
+
+    <import resource="hibernate-data-context.xml"/>
+
+    <import resource="spring-security-jdbc.xml"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -16,6 +32,17 @@
         </property>
     </bean>
 
-    <context:component-scan base-package="ru.parsentev" />
+    <bean class = "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <array>
+                <bean class = "org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+                </bean>
+            </array>
+        </property>
+    </bean>
 
+    <context:component-scan base-package="ru.parsentev" />
+    <context:annotation-config/>
+    <tx:annotation-driven/>
 </beans>

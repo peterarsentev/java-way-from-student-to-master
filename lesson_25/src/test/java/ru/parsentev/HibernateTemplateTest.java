@@ -1,5 +1,6 @@
 package ru.parsentev;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertThat;
  * @author parsentev
  * @since 20.06.2016
  */
+@Ignore
 public class HibernateTemplateTest {
     @Test
     public void whenUserTriangeDepsShouldDrawTrangle() throws Exception {

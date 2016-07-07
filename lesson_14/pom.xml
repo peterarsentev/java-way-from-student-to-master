@@ -13,4 +13,12 @@
 		<artifactId>lessons</artifactId>
 		<version>1.0</version>
 	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>JavaWayFromStudentToMaster</groupId>
+			<artifactId>lesson_008</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
 </project>

@@ -1,5 +1,6 @@
 package ru.parsentev;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.BufferedOutputStream;
@@ -15,6 +16,7 @@ import static org.junit.Assert.*;
  * @author parsentev
  * @since 20.06.2016
  */
+@Ignore
 public class SheetTest {
     @Test
     public void whenUserTriangeDepsShouldDrawTrangle() throws Exception {

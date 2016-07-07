@@ -1,0 +1,29 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <intercept-url pattern="/items.do" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/login.do" access="isAnonymous()" />
+        <form-login login-page="/login.do"
+                    default-target-url="/items.do"
+                    authentication-failure-url="/login.do?error"
+                    username-parameter="username"
+                    password-parameter="password"
+                    login-processing-url="/login.do"/>
+        <logout logout-success-url="/login.do?logout" />
+        <csrf disabled="true"/>
+    </http>
+
+    <authentication-manager >
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="123"  authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

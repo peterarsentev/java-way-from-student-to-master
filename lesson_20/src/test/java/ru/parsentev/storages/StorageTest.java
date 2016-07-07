@@ -1,5 +1,6 @@
 package ru.parsentev.storages;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.parsentev.models.User;
 
@@ -7,11 +8,12 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * TODO: make hbsql memory tests
  *
  * @author parsentev
  * @since 28.06.2016
  */
+@Ignore
 public class StorageTest {
     private final String url = "jdbc:postgresql://127.0.0.1:5432/clinic";
     private final String username = "postgres";
