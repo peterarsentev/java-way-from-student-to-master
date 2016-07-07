@@ -22,26 +22,26 @@
             <a href="<c:url value="/login.do?logout"/>" class="btn btn-default" role="button">Выйти</a>
         </div>
     </h2>
-    <form role="form" action="<c:url value="/users/add.do"/>" method="post" style="width: 50%;">
+    <form data-toggle="validator" role="form" action="<c:url value="/users/add.do"/>" method="post" style="width: 50%;">
         <div class="form-group">
             <label for="email">Логин:</label>
-            <input type="text" class="form-control" name="username" placeholder="Логин">
+            <input type="text" class="form-control" name="username" placeholder="Логин" required>
         </div>
         <div class="form-group">
             <label for="email">ФИО:</label>
-            <input type="text" class="form-control" name="fullname" placeholder="ФИО">
+            <input type="text" class="form-control" name="fullname" placeholder="ФИО" required>
         </div>
         <div class="form-group">
             <label for="email">Телефон:</label>
-            <input type="text" class="form-control" name="phone" placeholder="Телефон">
+            <input type="text" class="form-control" name="phone" placeholder="Телефон" required>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" placeholder="Enter email">
+            <input type="email" class="form-control" name="email" placeholder="Enter email" required>
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter password">
+            <input type="password" class="form-control" name="password" placeholder="Enter password" required>
         </div>
         <div class="form-group">
             <ul class="list-group">

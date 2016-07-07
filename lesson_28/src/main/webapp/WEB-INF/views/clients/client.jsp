@@ -10,6 +10,47 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function createMessage() {
+            $.ajax('<c:url value="/client/message/add.do"/>', {
+                method : 'post',
+                data: {text : $('#text').val(), 'owner.id' : '${user.id}'},
+                complete: function(data) {
+                    loadMessages();
+                    $('#text').val('');
+                }
+            });
+        }
+
+        function loadMessages() {
+            $.ajax('<c:url value="/client/messages.do"/>', {
+                method : 'get',
+                success: function(data) {
+                    var table = "";
+                    var messages = JSON.parse(data);
+                    var size = messages.length;
+                    for (var i=0;i!=size;++i) {
+                        var message = messages[i];
+                        var date = new Date(message.created);
+                        table += "<li class='media'>";
+                        table += "<div class='media-body'>";
+                        table += "<div class='text-muted pull-right'>";
+                        table += "<small class='text-muted'>"+ date.toISOString() +"</small>";
+                        table += "</div>";
+                        table += "<strong class='text-success'>"+message.fullname+"("+message.username+")</strong>";
+                        table += "<p>"+message.text+"</p>";
+                        table += "</div>";
+                        table += "</li>";
+                    }
+                    $('#messages').html(table);
+                }
+            });
+        }
+
+        $(function() {
+            loadMessages();
+        });
+    </script>
 </head>
 <body>
 
@@ -60,26 +101,12 @@
                 Сообщения
             </div>
             <div class="panel-body">
-                <form action="<c:url value="/client/message/add.do"/>" method="POST">
-                    <input type="hidden" name="owner.id" value="${user.id}">
-                    <textarea class="form-control" name="text" placeholder="Enter here for tweet..." rows="3"></textarea>
+                    <textarea class="form-control" id="text" name="text" placeholder="Enter here for tweet..." rows="3"></textarea>
                     <br>
-                    <button type="submit" class="btn btn-default pull-right">Добавить</button>
-                </form>
+                    <button type="button" onclick="return createMessage();" class="btn btn-default pull-right">Добавить</button>
                 <div class="clearfix"></div>
                 <hr>
-                <ul class="media-list">
-                    <c:forEach items="${messages}" var="msg" varStatus="status">
-                        <li class="media">
-                            <div class="media-body">
-                                <div class="text-muted pull-right">
-                                    <small class="text-muted"><fmt:formatDate type="date" value="${msg.created}"/></small>
-                                </div>
-                                <strong class="text-success">${msg.author.fullname}&nbsp;(${msg.author.username})</strong>
-                                <p>${msg.text}</p>
-                            </div>
-                        </li>
-                    </c:forEach>
+                <ul class="media-list" id="messages">
                 </ul>
             </div>
         </div>
