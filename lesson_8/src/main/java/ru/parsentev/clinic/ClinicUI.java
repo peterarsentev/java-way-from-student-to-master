@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * ��������� �������.
+ * Интерфейс клиники.
  * @author parsentev
  * @since 11.08.2015
  */
@@ -24,7 +24,7 @@ public class ClinicUI {
 	}
 
 	/**
-	 * �������� ����� �������� � �������.
+	 * Добавить новое действие в клинику.
 	 * @param action
 	 */
 	public void loadAction(final Action action) {
@@ -39,8 +39,8 @@ public class ClinicUI {
 	}
 
 	/**
-	 * ��������� ������� �������� ������������ � ��������� ���.
-	 * @param validator ���������.
+	 * Запросить выбрать действия пользователя и выполнить его.
+	 * @param validator валидатор.
 	 */
 	private void doAction(final Validator validator) {
 		this.actions.get(

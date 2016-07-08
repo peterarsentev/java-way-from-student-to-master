@@ -6,7 +6,7 @@ import ru.parsentev.clinic.IClinic;
 import ru.parsentev.clinic.actions.Action;
 
 /**
- * �������� �������.
+ * Создание клиента.
  * @author parsentev
  * @since 11.08.2015
  */

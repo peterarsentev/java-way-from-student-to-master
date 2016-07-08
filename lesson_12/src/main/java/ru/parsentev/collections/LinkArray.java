@@ -8,8 +8,8 @@ import java.util.Iterator;
  * @since 22.08.2015
  */
 public class LinkArray<T> implements Iterable<T> {
-	Element<T> head;
-	Element<T> current;
+	Element<T> first;
+	Element<T> last;
 	private int size;
 
 	public int size() {
@@ -18,28 +18,20 @@ public class LinkArray<T> implements Iterable<T> {
 
 	public void add(T t) {
 		++size;
-		if (this.head == null) {
-			this.head = new Element<>();
-			this.head.value = t;
-		} else if(current == null) {
-			this.current = new Element<>();
-			this.current.back = head;
-			this.current.value = t;
-			this.head.next = this.current;
+		if (this.first == null) {
+			this.first = new Element<>();
+			this.first.value = t;
+		} else if(last == null) {
+			this.last = new Element<>();
+			this.last.back = first;
+			this.last.value = t;
+			this.first.next = this.last;
 		} else {
 			Element<T> next = new Element<>();
 			next.value = t;
-			next.back = this.current;
-			this.current.next = next;
-			this.current = next;
-		}
-	}
-
-	public void remove(T t) {
-		for (T value : this) {
-			if (value.equals(t)) {
-
-			}
+			next.back = this.last;
+			this.last.next = next;
+			this.last = next;
 		}
 	}
 
@@ -62,7 +54,7 @@ public class LinkArray<T> implements Iterable<T> {
 			@Override
 			public T next() {
 				if (pos == null) {
-					pos = head;
+					pos = first;
 				} else {
 					pos = pos.next;
 				}
