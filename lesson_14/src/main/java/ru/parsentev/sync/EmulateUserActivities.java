@@ -3,6 +3,7 @@ package ru.parsentev.sync;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.parsentev.clinic.ClinicUI;
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * TODO: comment
@@ -10,7 +11,6 @@ import ru.parsentev.clinic.ClinicUI;
  * @since 01.05.2016
  */
 public class EmulateUserActivities extends Thread {
-	private static final Logger log = LoggerFactory.getLogger(EmulateUserActivities.class);
 
 	private final ClinicUI ui;
 
