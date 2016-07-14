@@ -33,7 +33,7 @@ public class AuthFilter implements Filter {
         } else if (session == null || user == null) {
             ((HttpServletResponse) response).sendRedirect(String.format("%s/login.do", req.getContextPath()));
         } else if ("ROLE_USER".equals(((User) user).getRole().getName())){
-            if (req.getRequestURI().contains("/client.do")) {
+            if (req.getRequestURI().contains("/client")) {
                 chain.doFilter(request, response);
             } else {
                 ((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN);

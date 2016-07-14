@@ -37,7 +37,7 @@
                         table += "<div class='text-muted pull-right'>";
                         table += "<small class='text-muted'>"+ date.toISOString() +"</small>";
                         table += "</div>";
-                        table += "<strong class='text-success'>"+message.fullname+"("+message.username+")</strong>";
+                        table += "<strong class='text-success'>"+message.author.fullname+"("+message.author.username+")</strong>";
                         table += "<p>"+message.text+"</p>";
                         table += "</div>";
                         table += "</li>";

@@ -34,8 +34,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Optional<User> result = this.userStorage.findByCridentional(req.getParameter("username"), req.getParameter("password"));
         if (result.isPresent()) {
-            req.getSession().setAttribute("user", result.get());
-            resp.sendRedirect(String.format("%s/users.do", req.getContextPath()));
+            User user = result.get();
+            req.getSession().setAttribute("user", user);
+            if ("ROLE_ADMIN".equals(user.getRole().getName())) {
+                resp.sendRedirect(String.format("%s/users.do", req.getContextPath()));
+            } else {
+                resp.sendRedirect(String.format("%s/client.do", req.getContextPath()));
+            }
         } else {
             this.doGet(req, resp);
         }

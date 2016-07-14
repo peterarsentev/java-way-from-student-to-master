@@ -48,4 +48,10 @@ public class MessageStorage {
     public void deleteByOwner(int id) {
         this.messages.removeIf(message -> message.getOwner().getId() == id);
     }
+
+    public void delete(int messageId) {
+        Message message = new Message();
+        message.setId(messageId);
+        this.messages.remove(message);
+    }
 }

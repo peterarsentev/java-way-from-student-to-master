@@ -146,4 +146,35 @@
         <servlet-name>PetAddServlet</servlet-name>
         <url-pattern>/pets/add.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.ClientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientServlet</servlet-name>
+        <url-pattern>/client.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.ClientMessageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <url-pattern>/client/messages.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <url-pattern>/client/message/add.do</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/messages/delete.do</url-pattern>
+    </servlet-mapping>
 </web-app>

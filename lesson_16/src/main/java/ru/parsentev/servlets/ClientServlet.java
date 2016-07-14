@@ -1,6 +1,9 @@
 package ru.parsentev.servlets;
 
 import org.slf4j.Logger;
+import ru.parsentev.models.User;
+import ru.parsentev.storages.MessageStorage;
+import ru.parsentev.storages.UserStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +21,14 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class ClientServlet extends HttpServlet {
     private static final Logger log = getLogger(ClientServlet.class);
+    private final UserStorage users = UserStorage.getInstance();
+    private final MessageStorage messages = MessageStorage.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        User user = (User) req.getSession().getAttribute("user");
+        req.setAttribute("user", user);
+        req.setAttribute("messages", this.messages.findByOwner(user.getId()));
+        req.getRequestDispatcher("/WEB-INF/views/clients/client.jsp").forward(req, resp);
     }
 }
