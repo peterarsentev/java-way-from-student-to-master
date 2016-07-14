@@ -1,9 +1,9 @@
 package ru.parsentev.servlets;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.parsentev.models.User;
-import ru.parsentev.services.UserStorage;
+import ru.parsentev.storages.RoleStorage;
+import ru.parsentev.storages.UserStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -26,7 +22,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class UserActions extends HttpServlet {
     private static final Logger log = getLogger(UserActions.class);
-
+    private RoleStorage roles = RoleStorage.getInstance();
     private UserStorage storage = UserStorage.getInstance();
 
     @Override
@@ -39,22 +35,9 @@ public class UserActions extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        try {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(
-                    new SimpleDateFormat("dd-MM-yyyy")
-                            .parse(req.getParameter("create"))
-            );
-            this.storage.add(
-                    new User(
-                            req.getParameter("name"),
-                            req.getParameter("login"),
-                            cal
-                    )
-            );
-        } catch (ParseException e) {
-            log.error("", e);
-        }
+        this.storage.add(
+                new User()
+        );
         resp.sendRedirect("/users");
     }
 

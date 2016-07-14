@@ -2,17 +2,14 @@ package ru.parsentev.servlets;
 
 import org.junit.Test;
 import ru.parsentev.models.User;
-import ru.parsentev.services.UserStorage;
+import ru.parsentev.storages.UserStorage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -30,17 +27,13 @@ public class UserActionsTest {
     public void whenExecutePostShouldCreateUser()
             throws ServletException, IOException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        User user = new User("Petr", "Arsentev", Calendar.getInstance());
+        User user = new User();
+        user.setUsername("Petr");
+        user.setFullname("Arsentev");
         UserActions actions = new UserActions();
         HttpServletRequest req = mock(HttpServletRequest.class);
-        when(req.getParameter("name")).thenReturn(user.getName());
-        when(req.getParameter("login")).thenReturn(user.getLogin());
-        when(req.getParameter("create"))
-                .thenReturn(
-                        format.format(
-                                user.getCreated().getTime()
-                        )
-                );
+        when(req.getParameter("name")).thenReturn(user.getUsername());
+        when(req.getParameter("login")).thenReturn(user.getFullname());
         HttpServletResponse resp = mock(HttpServletResponse.class);
         actions.doPost(req, resp);
         assertThat(

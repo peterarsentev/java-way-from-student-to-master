@@ -1,50 +1,105 @@
 package ru.parsentev.models;
 
-import org.slf4j.Logger;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.Calendar;
-
-import static org.slf4j.LoggerFactory.getLogger;
 
 /**
+ * TODO: comment
  *
  * @author parsentev
- * @since 27.06.2016
+ * @since 22.06.2016
  */
 public class User {
-    private static final Logger log = getLogger(User.class);
-    private String name;
-    private String login;
-    private Calendar created;
+    private int id;
+    private String username;
+    private String fullname;
+    private String password;
+    private boolean enabled;
+    private String phone;
+    private String email;
+    private Role role;
+    private List<Pet> pets = new ArrayList<>();
 
-    public User(String name, String login, Calendar created) {
-        this.name = name;
-        this.login = login;
-        this.created = created;
+    public User() {
     }
 
-    public String getName() {
-        return name;
+    public User(int id) {
+        this();
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
     }
 
-    public String getLogin() {
-        return login;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getUsername() {
+        return username;
     }
 
-    public Calendar getCreated() {
-        return created;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setCreated(Calendar created) {
-        this.created = created;
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
 
     @Override
@@ -54,15 +109,13 @@ public class User {
 
         User user = (User) o;
 
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (id != user.id) return false;
+
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        return result;
+        return id;
     }
 }

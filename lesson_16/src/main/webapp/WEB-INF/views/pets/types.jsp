@@ -25,7 +25,6 @@
         <thead>
         <tr>
             <th>Кличка</th>
-            <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -35,15 +34,11 @@
             <tr>
                 <td><c:out value="${type.name}"/></td>
                 <td></td>
-                <td>
-                    <a style="text-decoration: none; color:inherit;" href="<c:url value="/users/add.do"/>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&nbsp;
-                    <a style="text-decoration: none; color:inherit;" href="<c:url value="/users/add.do"/>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <form role="form" action="<c:url value="/pets/add.do"/>" method="post" style="width: 50%;">
+    <form role="form" action="<c:url value="/pets/types.do"/>" method="post" style="width: 50%;">
         <div class="form-group">
             <label for="name">Кличка:</label>
             <input type="text" class="form-control" name="name" placeholder="Кличка">

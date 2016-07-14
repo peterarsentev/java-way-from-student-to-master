@@ -25,7 +25,6 @@
         <thead>
         <tr>
             <th>Роль</th>
-            <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -35,10 +34,6 @@
             <tr>
                 <td><c:out value="${role.name}"/></td>
                 <td></td>
-                <td>
-                    <a style="text-decoration: none; color:inherit;" href="<c:url value="/users/add.do"/>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>&nbsp;
-                    <a style="text-decoration: none; color:inherit;" href="<c:url value="/users/add.do"/>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                </td>
             </tr>
         </c:forEach>
         </tbody>
