@@ -26,19 +26,17 @@ public class UserActionsTest {
     @Test
     public void whenExecutePostShouldCreateUser()
             throws ServletException, IOException {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         User user = new User();
         user.setUsername("Petr");
-        user.setFullname("Arsentev");
         UserActions actions = new UserActions();
         HttpServletRequest req = mock(HttpServletRequest.class);
-        when(req.getParameter("name")).thenReturn(user.getUsername());
-        when(req.getParameter("login")).thenReturn(user.getFullname());
+        when(req.getParameter("username")).thenReturn(user.getUsername());
         HttpServletResponse resp = mock(HttpServletResponse.class);
         actions.doPost(req, resp);
+        UserStorage users = UserStorage.getInstance();
         assertThat(
-                UserStorage.getInstance().getAll().iterator().next(),
-                is(user)
+                users.getAll().get(users.getAll().size()-1).getUsername(),
+                is(user.getUsername())
         );
     }
 

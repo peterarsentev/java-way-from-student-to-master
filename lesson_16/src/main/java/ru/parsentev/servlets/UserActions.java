@@ -35,8 +35,10 @@ public class UserActions extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        User user = new User();
+        user.setUsername(req.getParameter("username"));
         this.storage.add(
-                new User()
+                user
         );
         resp.sendRedirect("/users");
     }
