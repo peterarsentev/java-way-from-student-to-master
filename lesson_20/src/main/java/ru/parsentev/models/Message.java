@@ -1,16 +1,19 @@
 package ru.parsentev.models;
 
+import java.sql.Timestamp;
+
 /**
  * TODO: comment
  *
  * @author parsentev
  * @since 05.07.2016
  */
-public class Pet {
+public class Message {
     private int id;
-    private String nick;
-    private PetType type;
+    private String text;
+    private Timestamp created;
     private User owner;
+    private User author;
 
     public int getId() {
         return id;
@@ -20,20 +23,20 @@ public class Pet {
         this.id = id;
     }
 
-    public String getNick() {
-        return nick;
+    public String getText() {
+        return text;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public PetType getType() {
-        return type;
+    public Timestamp getCreated() {
+        return created;
     }
 
-    public void setType(PetType type) {
-        this.type = type;
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 
     public User getOwner() {
@@ -44,14 +47,22 @@ public class Pet {
         this.owner = owner;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Pet pet = (Pet) o;
+        Message message = (Message) o;
 
-        if (id != pet.id) return false;
+        if (id != message.id) return false;
 
         return true;
     }

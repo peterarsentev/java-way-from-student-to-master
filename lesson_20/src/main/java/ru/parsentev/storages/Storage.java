@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.parsentev.models.User;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,23 +19,22 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class Storage {
     private static final Logger LOG = getLogger(Storage.class);
 
-    private final String url;
-    private final String username;
-    private final String password;
+    private final DataSource ds;
 
-    public Storage(String url, String username, String password) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+    public Storage(final DataSource ds) {
+        this.ds = ds;
     }
 
     public List<User> values() {
         final List<User> users = new ArrayList<>();
-        try (final Connection connection = DriverManager.getConnection(this.url, this.url, this.password);
+        try (final Connection connection = this.ds.getConnection();
              final Statement statement = connection.createStatement();
              final ResultSet rs = statement.executeQuery("select * from users")) {
             while (rs.next()) {
-                users.add(new User(rs.getInt("id"), rs.getString("name"), null));
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                users.add(user);
             }
         } catch (final SQLException e) {
             LOG.error("Error occurred in getting list of users", e);
@@ -43,12 +43,13 @@ public class Storage {
     }
 
     public User create(final User user) {
-        try (final Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+        try (final Connection connection = this.ds.getConnection();
              final PreparedStatement statement = connection.prepareStatement(
-                     "insert into users (name) values (?)",
+                     "insert into users (username, role_id) values (?, ?)",
                      Statement.RETURN_GENERATED_KEYS
              )) {
-            statement.setString(1, user.getName());
+            statement.setString(1, user.getUsername());
+            statement.setInt(2, user.getRole().getId());
             statement.executeUpdate();
             try (ResultSet id = statement.getGeneratedKeys()) {
                 if (id.next()) {
@@ -62,9 +63,9 @@ public class Storage {
     }
 
     public void update(final User user) {
-        try (final Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
-             final PreparedStatement statement = connection.prepareStatement("update users set name = ?")) {
-            statement.setString(1, user.getName());
+        try (final Connection connection = this.ds.getConnection();
+             final PreparedStatement statement = connection.prepareStatement("update users set username = ?")) {
+            statement.setString(1, user.getUsername());
             statement.executeUpdate();
         } catch (SQLException e) {
             LOG.error("Error occurred in updating user", e);
@@ -72,7 +73,7 @@ public class Storage {
     }
 
     public void delete(int id) {
-        try (final Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+        try (final Connection connection = this.ds.getConnection();
              final PreparedStatement statement = connection.prepareStatement("delete from users where id = ?")) {
             statement.setInt(1, id);
             statement.executeUpdate();
@@ -82,12 +83,15 @@ public class Storage {
     }
 
     public User findById(int id) {
-        try (final Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+        try (final Connection connection = this.ds.getConnection();
              final PreparedStatement statement = connection.prepareStatement("select * from users where id=(?)")) {
             statement.setInt(1, id);
             try (final ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
-                    return new User(rs.getInt("id"), rs.getString("name"), null);
+                    User user = new User();
+                    user.setId(rs.getInt("id"));
+                    user.setUsername(rs.getString("username"));
+                    return user;
                 }
             }
         } catch (SQLException e) {

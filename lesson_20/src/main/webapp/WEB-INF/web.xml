@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>Items</display-name>
+
+    <filter>
+        <filter-name>Compression Filter</filter-name>
+        <filter-class>ru.parsentev.servlets.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Compression Filter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>UserActions</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UserActions</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserActions</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UsersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RoleServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.RoleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RoleServlet</servlet-name>
+        <url-pattern>/roles.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserEditServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UserEditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserEditServlet</servlet-name>
+        <url-pattern>/users/edit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserAddServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UserAddServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserAddServlet</servlet-name>
+        <url-pattern>/users/add.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PetTypeServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.PetTypeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PetTypeServlet</servlet-name>
+        <url-pattern>/pets/types.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RoleAddServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.RoleAddServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RoleAddServlet</servlet-name>
+        <url-pattern>/roles/add.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MessageServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.MessageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/messages/add.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.UserDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <url-pattern>/users/delete.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PetServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.PetServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PetServlet</servlet-name>
+        <url-pattern>/pets.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PetAddServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.PetAddServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PetAddServlet</servlet-name>
+        <url-pattern>/pets/add.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.ClientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientServlet</servlet-name>
+        <url-pattern>/client.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <servlet-class>ru.parsentev.servlets.ClientMessageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <url-pattern>/client/messages.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ClientMessageServlet</servlet-name>
+        <url-pattern>/client/message/add.do</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/messages/delete.do</url-pattern>
+    </servlet-mapping>
+</web-app>

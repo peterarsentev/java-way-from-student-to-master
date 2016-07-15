@@ -1,27 +1,32 @@
 package ru.parsentev.models;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import java.util.ArrayList;
 import java.util.List;
 
+
 /**
+ * TODO: comment
+ *
  * @author parsentev
- * @since 28.06.2016
+ * @since 22.06.2016
  */
 public class User {
     private int id;
-    private String name;
-    private List<Pet> pets;
+    private String username;
+    private String fullname;
+    private String password;
+    private boolean enabled;
+    private String phone;
+    private String email;
+    private Role role;
+    private List<Pet> pets = new ArrayList<>();
 
-    public User(String name) {
-        this.name = name;
+    public User() {
     }
 
-    public User(int id, String name, List<Pet> pets) {
-        this(name);
+    public User(int id) {
+        this();
         this.id = id;
-        this.pets = pets;
     }
 
     public int getId() {
@@ -32,12 +37,60 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Pet> getPets() {
