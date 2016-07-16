@@ -18,10 +18,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class PetRepository {
     private static final Logger LOG = getLogger(PetRepository.class);
-
-    private final SessionFactory factory = new Configuration()
-            .configure()
-            .buildSessionFactory();
+    private final SessionFactory factory = HibernateFactory.getFactory();
 
     public List<Pet> values() {
         List<Pet> result = new ArrayList<>();

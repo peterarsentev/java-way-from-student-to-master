@@ -1,0 +1,16 @@
+<hibernate-mapping>
+    <class name="ru.parsentev.models.Pet" table="pets">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="nick" column="nick"/>
+
+        <many-to-one name="owner"
+                     column="user_id"
+                     class="ru.parsentev.models.User" fetch="join"/>
+
+        <many-to-one name="type"
+                     column="type_id"
+                     class="ru.parsentev.models.PetType" fetch="join"/>
+    </class>
+</hibernate-mapping>

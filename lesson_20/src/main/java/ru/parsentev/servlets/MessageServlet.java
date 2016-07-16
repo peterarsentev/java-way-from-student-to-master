@@ -42,6 +42,6 @@ public class MessageServlet extends HttpServlet {
         message.setCreated(new Timestamp(System.currentTimeMillis()));
         message.setText(req.getParameter("text"));
         this.messages.add(message);
-        resp.sendRedirect(String.format("%s/user.do?id=%s", req.getContextPath(), user.getId()));
+        resp.sendRedirect(String.format("%s/user.do?id=%s", req.getContextPath(), message.getOwner().getId()));
     }
 }

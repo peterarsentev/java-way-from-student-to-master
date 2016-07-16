@@ -1,0 +1,17 @@
+<hibernate-mapping>
+    <class name="ru.parsentev.models.Message" table="messages">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="text" column="text"/>
+        <property name="created" column="created"/>
+
+        <many-to-one name="owner"
+                     column="owner_id"
+                     class="ru.parsentev.models.User"/>
+
+        <many-to-one name="author"
+                     column="author_id"
+                     class="ru.parsentev.models.User"/>
+    </class>
+</hibernate-mapping>

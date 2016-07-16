@@ -19,10 +19,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class UserRepository {
     private static final Logger LOG = getLogger(UserRepository.class);
-
-    private final SessionFactory factory = new Configuration()
-            .configure()
-            .buildSessionFactory();
+    private final SessionFactory factory = HibernateFactory.getFactory();
 
     public List<User> values() {
         List<User> result = new ArrayList<>();
