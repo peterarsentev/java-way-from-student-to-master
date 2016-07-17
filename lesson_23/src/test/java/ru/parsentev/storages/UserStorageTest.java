@@ -73,7 +73,6 @@ public class UserStorageTest {
         user = this.users.add(user);
         User result = this.users.findById(user.getId()).get();
         assertThat(user, is(result));
-        assertThat(result.getRole().getName(), is("ROLE_ADMIN"));
     }
 
     @Test

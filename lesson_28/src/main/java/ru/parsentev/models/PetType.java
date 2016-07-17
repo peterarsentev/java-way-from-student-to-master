@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @since 05.07.2016
  */
 @Entity(name = "pet_types")
-public class PetType {
+public class PetType implements Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

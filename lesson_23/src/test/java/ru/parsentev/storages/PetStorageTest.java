@@ -34,7 +34,5 @@ public class PetStorageTest {
         this.pets.add(pet);
         Pet result = this.pets.findById(pet.getId()).get();
         assertThat(pet, is(result));
-        User pets = this.users.getAll().iterator().next();
-        assertThat(pets.getPets().iterator().next().getType().getName(), is("test"));
     }
 }

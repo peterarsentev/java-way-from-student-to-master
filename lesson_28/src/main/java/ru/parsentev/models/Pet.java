@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @since 05.07.2016
  */
 @Entity(name = "pets")
-public class Pet {
+public class Pet implements Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

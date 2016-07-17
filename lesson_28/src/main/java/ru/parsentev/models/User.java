@@ -14,7 +14,7 @@ import java.util.List;
  * @since 22.06.2016
  */
 @Entity(name = "users")
-public class User {
+public class User implements Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @since 05.07.2016
  */
 @Entity(name = "messages")
-public class Message {
+public class Message implements Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

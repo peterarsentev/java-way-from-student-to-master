@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @since 05.07.2016
  */
 @Entity(name = "roles")
-public class Role {
+public class Role implements Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

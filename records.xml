@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<records>
+    <roles>
+        <role>
+            <id>1</id>
+            <name>ROLE_TEST</name>
+        </role>
+    </roles>
+    <users>
+        <user>
+            <id>3</id>
+            <username>TEST</username>
+            <role>
+                <id>1</id>
+            </role>
+        </user>
+    </users>
+</records>

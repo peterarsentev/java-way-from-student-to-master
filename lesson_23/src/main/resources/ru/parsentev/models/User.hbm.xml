@@ -12,7 +12,7 @@
 
         <many-to-one name="role"
                      column="role_id"
-                     class="ru.parsentev.models.Role"/>
+                     class="ru.parsentev.models.Role" fetch="join"/>
 
         <bag name="pets" inverse="true" lazy="false">
             <key column="user_id" not-null="true"/>
