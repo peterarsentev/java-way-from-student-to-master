@@ -25,13 +25,15 @@ public class UserAddServlet extends HttpServlet {
     private final UserStorage users = UserStorage.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         req.setAttribute("roles", this.roles.getAll());
         req.getRequestDispatcher("/WEB-INF/views/users/add.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         User user = new User();
         user.setUsername(req.getParameter("username"));
         user.setFullname(req.getParameter("fullname"));
