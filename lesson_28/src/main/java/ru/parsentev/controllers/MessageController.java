@@ -40,7 +40,9 @@ public class MessageController {
     @RequestMapping(value = "/messages/add", method = RequestMethod.POST)
     public String save(@ModelAttribute Message message) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        message.setAuthor(this.userRepository.findByUsername(((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername()));
+        message.setAuthor(this.userRepository.findByUsername(
+                ((org.springframework.security.core.userdetails.User) auth.getPrincipal()
+                ).getUsername()));
         message.setCreated(new Timestamp(System.currentTimeMillis()));
         this.repository.save(message);
         return String.format("redirect:/user.do?id=%s", message.getOwner().getId());

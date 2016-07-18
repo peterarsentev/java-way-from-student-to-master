@@ -6,7 +6,9 @@
     <title>Ветеренарная клиника</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">     <script src="<c:url value="/bootstrap/js/jquery.min.js"/>"></script>     <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+    <link rel="stylesheet" href="/clinic/bootstrap/css/bootstrap.min.css">
+    <script src="<c:url value="/bootstrap/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </head>
 <body>
 <div class="container">

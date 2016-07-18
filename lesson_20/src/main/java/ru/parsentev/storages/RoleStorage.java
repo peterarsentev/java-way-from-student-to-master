@@ -52,7 +52,8 @@ public class RoleStorage {
     public Optional<Role> findById(final int id) {
         Optional<Role> result = Optional.empty();
         try (final Connection connection = Pool.getDataSource().getConnection();
-             final PreparedStatement statement = connection.prepareStatement("select * from roles where id=(?)")) {
+             final PreparedStatement statement = connection.prepareStatement(
+                     "select * from roles where id=(?)")) {
             statement.setInt(1, id);
             try (final ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {

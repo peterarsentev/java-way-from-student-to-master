@@ -24,7 +24,10 @@ public abstract class DbInit {
         try (Connection collection = Pool.getDataSource().getConnection();
              Statement statement = collection.createStatement()) {
             statement.execute(
-                    IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream("schema.sql"))
+                    IOUtils.toString(
+                            this.getClass().getClassLoader()
+                                    .getResourceAsStream("schema.sql")
+                    )
             );
         } catch (final IOException | SQLException e) {
             log.error("error", e);

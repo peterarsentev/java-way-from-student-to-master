@@ -16,6 +16,8 @@ import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 /**
  * TODO: comment
  *
@@ -23,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @since 11.07.2016
  */
 public class RoleStorage {
-    private static final Logger log = LoggerFactory.getLogger(RoleStorage.class);
+    private static final Logger log = getLogger(RoleStorage.class);
     private static final RoleStorage instance = new RoleStorage();
     private final SessionFactory factory = HibernateFactory.getFactory();
 

@@ -1,5 +1,6 @@
 package ru.parsentev.repositories;
 
+import com.google.common.base.Joiner;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import ru.parsentev.models.Message;

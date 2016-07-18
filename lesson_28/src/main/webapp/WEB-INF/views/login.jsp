@@ -6,7 +6,9 @@
     <title>Ветеренарная клиника</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">     <script src="<c:url value="/bootstrap/js/jquery.min.js"/>"></script>     <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
+    <script src="<c:url value="/bootstrap/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </head>
 <body>
 <div class="container">
@@ -19,14 +21,17 @@
                 <c:if test="${not empty error}">
                     <div id="login-alert" class="alert alert-danger col-sm-12">${error}</div>
                 </c:if>
-                <form id="loginform" action="<c:url value="/login.do"/>" method="post" class="form-horizontal" role="form">
+                <form id="loginform" action="<c:url value="/login.do"/>"
+                      method="post" class="form-horizontal" role="form">
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                        <input id="login-username" type="text" class="form-control" name="username"
+                               value="" placeholder="username or email">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        <input id="login-password" type="password"
+                               class="form-control" name="password" placeholder="password">
                     </div>
                     <div style="margin-top:10px" class="form-group">
                         <div class="col-sm-12 controls">

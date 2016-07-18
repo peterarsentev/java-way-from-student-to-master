@@ -14,7 +14,7 @@
 
     <filter-mapping>
         <filter-name>Compression Filter</filter-name>
-        <url-pattern>*</url-pattern>
+        <url-pattern>*.do</url-pattern>
     </filter-mapping>
 
     <servlet>
